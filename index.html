@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>이미지 압축기</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>이미지 압축기</h1>
+            <p class="subtitle">이미지를 1.9MB 이하로 압축하세요</p>
+            <p class="limit-info">최대 업로드 용량: 100MB</p>
+        </header>
+
+        <main>
+            <div class="upload-area" id="uploadArea">
+                <div class="upload-content">
+                    <svg class="upload-icon" width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                        <polyline points="17 8 12 3 7 8"></polyline>
+                        <line x1="12" y1="3" x2="12" y2="15"></line>
+                    </svg>
+                    <p class="upload-text">이미지를 드래그하여 놓거나 클릭하여 선택하세요</p>
+                    <button class="btn btn-primary" id="selectBtn">파일 선택</button>
+                    <input type="file" id="fileInput" accept="image/*" style="display: none;">
+                </div>
+            </div>
+
+            <div class="error-message" id="errorMessage" style="display: none;"></div>
+
+            <div class="preview-section" id="previewSection" style="display: none;">
+                <div class="preview-container">
+                    <div class="preview-box">
+                        <h3>원본 이미지</h3>
+                        <img id="originalPreview" alt="원본 이미지">
+                        <div class="image-info">
+                            <span id="originalSize"></span>
+                            <span id="originalDimensions"></span>
+                        </div>
+                    </div>
+                    <div class="preview-box">
+                        <h3>압축된 이미지</h3>
+                        <div class="loading-overlay" id="loadingOverlay">
+                            <div class="spinner"></div>
+                            <p>압축 중...</p>
+                            <div class="progress-bar">
+                                <div class="progress-fill" id="progressFill"></div>
+                            </div>
+                        </div>
+                        <img id="compressedPreview" alt="압축된 이미지" style="display: none;">
+                        <div class="image-info" id="compressedInfo" style="display: none;">
+                            <span id="compressedSize"></span>
+                            <span id="compressedDimensions"></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="action-buttons">
+                    <button class="btn btn-secondary" id="resetBtn">다시 시작</button>
+                    <button class="btn btn-primary" id="downloadBtn" style="display: none;">다운로드</button>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/browser-image-compression@2.0.2/dist/browser-image-compression.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
+
